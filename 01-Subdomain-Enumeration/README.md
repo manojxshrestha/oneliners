@@ -94,6 +94,12 @@ site:*.example.com (ext:doc OR ext:docx OR ext:odt OR ext:pdf OR ext:rtf OR ext:
 
 * Use **[ViewDNS](https://viewdns.info/)** to check **IP history** and attempt to grab the **origin IP** of the target.
 
+```bash
+# CDN detection and origin IP discovery
+cat alive-domains.txt | httpx -silent -cdn | grep -v "true" > non-cdn.txt  # Potential origin IPs
+cat alive-domains.txt | httpx -silent -asn | grep -E "13335|15169|16509" > cloudflare-ips.txt  # CDN‑hosted
+```
+
 ### Port Scan
 
 Run a port scan to identify open services:
