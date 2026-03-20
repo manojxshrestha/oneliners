@@ -1,6 +1,6 @@
 # Web Recon & Vulnerability Hunting Master Cheatsheet 🚀 (2026 Edition)
 
-![GitHub stars](https://img.shields.io/github/stars/manojxshrestha/oneliners?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Last commit](https://img.shields.io/github/last-commit/yourusername/yourrepo) ![Made with Bash](https://img.shields.io/badge/Made%20with-Bash-4EAA25?style=flat-square&logo=gnubash)
+![GitHub stars](https://img.shields.io/github/stars/manojxshrestha/oneliners?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Last commit](https://img.shields.io/github/last-commit/manojxshrestha/oneliners) ![Made with Bash](https://img.shields.io/badge/Made%20with-Bash-4EAA25?style=flat-square&logo=gnubash)
 
 **Master Bug‑Hunting Cheatsheet for 2026** – A comprehensive consolidation of 47 vulnerability testing categories, with methodology, tool installation, detection commands, exploitation techniques, 2025–2026 trends, prevention guidance, and references.
 
