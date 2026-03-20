@@ -573,6 +573,9 @@ go install github.com/devanshbatham/paramspider@latest
 
 # Deduplication
 go install github.com/s0md3v/uro@latest
+
+# Extract all URLs from the gospider output folder
+https://github.com/manojxshrestha/scripts/blob/main/extracturls.sh
 ```
 
 ### Historical URL Collection Commands
@@ -597,7 +600,7 @@ cat alive-domains.txt | xargs -I@ urlfinder @ -o urlfinder_@.txt
 # 1. Hakrawler – fast crawling
 cat https-subs.txt | hakrawler -subs -u -d 3 > hakcrawlurls.txt
 
-# 2. Katana – modern crawler with JavaScript execution
+# 2. Katana – modern crawler with JavaScript execution (for inscope test only}
 cat scopeurls.txt | katana -d 3 -jc -timeout 15 -c 20 -kf -fx ssr -aff | anew crawledurls.txt
 
 # 3. Katana for HTTPS subdomains
@@ -607,14 +610,20 @@ cat https-subs.txt | katana -d 3 -jc -timeout 15 -c 20 | anew cleansubskatanaurl
 gospider -S https-subs.txt -o gooutput -c 10 -d 3 -t 20
 
 # 5. Extract URLs from GoSpider output
-find gooutput -name "*.txt" -exec cat {} \; | grep -oE 'https?://[^ ]+' | anew gospider-urls.txt
+Use extracturls.sh script to extract all URLs from the gospider output folder. The extracted URLs will be saved to allsubsurls.txt.
+
+./extracturls.sh
+Usage: ./extracturls.sh -f <gospider_output_folder> -d <target_domain>
+
+mv alivesubsurls.txt ~/workingdir
+mv alivesubdomains.txt ~/workingdir
 
 # 6. Merge crawl results
-cat waygauurls.txt crawledurls.txt | uro > katanaurls.txt
-cat waygauurls.txt cleansubskatanaurls.txt hakcrawlurls.txt | uro > katanaurls.txt
+cat waygauurls.txt crawledurls.txt | uro > merged-crawl.txt (for inscope test only}
+cat waygauurls.txt cleansubskatanaurls.txt hakcrawlurls.txt alivesubsurls.txt | uro > merged-crawl.txt
 ```
 
-This below script filters URLs from `katanaurls.txt` that belong to a user-specified domain and saves them to `crawledurls.txt`.
+This below script filters URLs from `merged-crawl.txt` that belong to a user-specified domain and saves them to `crawledurls.txt`.
 
 ```bash
 nano filter.sh
@@ -624,7 +633,7 @@ chmod +x filter.sh
 ```bash
 #!/bin/bash
 
-input_file="katanaurls.txt"
+input_file="merged-crawl.txt"
 output_file="crawledurls.txt"
 
 # Check if input file exists
