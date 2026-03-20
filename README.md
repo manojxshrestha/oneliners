@@ -598,10 +598,10 @@ cat alive-domains.txt | xargs -I@ urlfinder @ -o urlfinder_@.txt
 cat https-subs.txt | hakrawler -subs -u -d 3 > hakcrawlurls.txt
 
 # 2. Katana – modern crawler with JavaScript execution
-cat scopeurls.txt | katana -d 5 -jc -timeout 15 -c 20 -kf -fx ssr -aff | anew crawledurls.txt
+cat scopeurls.txt | katana -d 3 -jc -timeout 15 -c 20 -kf -fx ssr -aff | anew crawledurls.txt
 
 # 3. Katana for HTTPS subdomains
-cat https-subs.txt | katana -d 5 -jc -timeout 15 -c 20 | anew cleansubskatanaurls.txt
+cat https-subs.txt | katana -d 3 -jc -timeout 15 -c 20 | anew cleansubskatanaurls.txt
 
 # 4. GoSpider – sophisticated spider
 gospider -S https-subs.txt -o gooutput -c 10 -d 3 -t 20
