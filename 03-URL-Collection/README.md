@@ -10,7 +10,7 @@
 waymore -i example.com -mode U -oU wayurls.txt
 ```
 
-### GAU - GetAllUrls
+### GAU - GetAllUrls (optional)
 
 ```bash
 echo "example.com" | gau --threads 10 --subs | anew gauurls.txt
@@ -39,7 +39,7 @@ cat scopeurls.txt | katana -d 3 -jc -timeout 15 -c 20 -kf -fx ssr -aff | anew cr
 ### # 3. Katana for HTTPS subdomains
 
 ```bash
-cat https-subs.txt | katana -d 5 -jc -timeout 15 -c 20 | anew cleansubskatanaurls.txt
+cat https-subs.txt | katana -d 3 -jc -timeout 15 -c 20 | anew cleansubskatanaurls.txt
 ```
 
 ### # 4. GoSpider – sophisticated spider
