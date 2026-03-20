@@ -30,7 +30,7 @@ cat wayurls.txt gauurls.txt | uro | sort -u > waygauurls.txt
 cat https-subs.txt | hakrawler -subs -u -d 3 > hakcrawlurls.txt
 ```
 
-### # 2. Katana – modern crawler with JavaScript execution
+### # 2. Katana – modern crawler with JavaScript execution (for inscope test only}
 
 ```bash
 cat scopeurls.txt | katana -d 3 -jc -timeout 15 -c 20 -kf -fx ssr -aff | anew crawledurls.txt
@@ -50,15 +50,22 @@ gospider -S https-subs.txt -o gooutput -c 10 -d 3 -t 20
 
 ### # 5. Extract URLs from GoSpider output
 
+Use this <a href="https://github.com/manojxshrestha/scripts/blob/main/extracturls.sh"><code>extracturls.sh</code></a> script to extract all URLs from the gospider output folder <code>gooutput</code>. The extracted URLs will be saved to <code>allsubsurls.txt</code>.
+
 ```bash
-find gooutput -name "*.txt" -exec cat {} \; | grep -oE 'https?://[^ ]+' | anew gospider-urls.txt
+./extracturls.sh
+Usage: ./extracturls.sh -f <gospider_output_folder> -d <target_domain>
+```
+```bash
+mv alivesubsurls.txt ~/workingdir
+mv alivesubdomains.txt ~/workingdir
 ```
 
 ### # 6. Merge crawl results
 
 ```bash
-cat waygauurls.txt crawledurls.txt | uro > katanaurls.txt
-cat waygauurls.txt cleansubskatanaurls.txt hakcrawlurls.txt | uro > katanaurls.txt
+cat waygauurls.txt crawledurls.txt | uro > merged-crawl.txt (for inscope test only}
+cat waygauurls.txt cleansubskatanaurls.txt hakcrawlurls.txt alivesubsurls.txt | uro > merged-crawl.txt
 ```
 
 ## Filter URLs by Domain
@@ -75,7 +82,7 @@ chmod +x filter.sh
 ```bash
 #!/bin/bash
 
-input_file="katanaurls.txt"
+input_file="merged-crawl.txt"
 output_file="crawledurls.txt"
 
 # Check if input file exists
