@@ -92,5 +92,3 @@ done < https-subs.txt | sort -u \
 cariddi -u https://target.com -d 5 -s -e -ext 1 -plain -t 50 -c 20 | tee cariddi-results.txt && grep -E "(api|secret|key|token|pass|auth)" cariddi-results.txt | anew secrets-found.txt
 ```
 
-## References
-
