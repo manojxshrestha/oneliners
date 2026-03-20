@@ -33,7 +33,7 @@ cat https-subs.txt | hakrawler -subs -u -d 3 > hakcrawlurls.txt
 ### # 2. Katana – modern crawler with JavaScript execution
 
 ```bash
-cat scopeurls.txt | katana -d 5 -jc -timeout 15 -c 20 -kf -fx ssr -aff | anew crawledurls.txt
+cat scopeurls.txt | katana -d 3 -jc -timeout 15 -c 20 -kf -fx ssr -aff | anew crawledurls.txt
 ```
 
 ### # 3. Katana for HTTPS subdomains
