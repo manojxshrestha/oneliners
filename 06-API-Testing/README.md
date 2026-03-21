@@ -41,7 +41,7 @@ npm install -g graphql-path-enum                                    # GraphQL en
 cat https-subs.txt | httpx -silent -threads 100 -path /api/v1,/api/v2,/api/v3,/api/swagger.json,/graphql,/rest,/backend -mc 200,401,403 -cl | tee api-endpoints.txt
 
 # Alternative with ffuf for broader discovery
-ffuf -u https://FUZZ.example.com -w /home/pwn/wordlists/api/endpoints.txt -mc 200,401,403 -t 50 -o ffuf-api.txt
+ffuf -u https://FUZZ.example.com -w /home/pwn/wordlists/api/api-endpoints.txt -mc 200,401,403 -t 50 -o ffuf-api.txt
 ```
 
 ### 1.2 OpenAPI/Swagger Documentation Detection
