@@ -214,7 +214,7 @@ kr brute https://target.com -w /home/pwn/wordlists/kiterunner/routes-large.kite 
 cat js-api-endpoints.txt | awk -F '/' '{print $NF}' | sort -u > api-words.txt
 
 # Combine with common API parameters
-cat api-words.txt /home/pwn/wordlists/api/params.txt | sort -u > custom-api-wordlist.txt
+cat api-words.txt /home/pwn/wordlists/burp-parameter-names.txt | sort -u > custom-api-wordlist.txt
 ```
 
 ## 5. References & Further Reading
