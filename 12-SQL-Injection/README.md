@@ -158,6 +158,11 @@ ghauri -u "https://target.com/product?id=1" --batch --technique=BEUSTQ --tamper=
 
 # Batch scanning
 ghauri -l gf-sqli.txt --batch --threads 5 --dbs --tamper=between,charencode
+
+while IFS= read -r url; do
+    echo -e "\n\n====================\nTesting: $url\n===================="
+    ghauri -u "$url" --batch --threads 5 --dbs --level=3 --flush-session
+done < gf-sqli.txt | tee ghauri-results.txt
 ```
 
 ### 12. NoSQL Injection Testing
