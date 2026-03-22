@@ -61,8 +61,8 @@ JSON.parse(atob("PASTE_TOKEN_HERE".split('.')[1]))
 # Full decode with python
 python3 -c "import jwt, sys; t=sys.argv[1]; print(jwt.decode(t, options={'verify_signature': False}, algorithms=['HS256']))" "eyJhbGciOiJIUzI1NiIs..."
 
-# Using jwt_tool
-python3 jwt_tool.py "eyJhbGciOiJIUzI1NiIs..." -T
+# Better use
+https://www.jwt.io/
 ```
 
 ## Attack Vectors & Exploitation
