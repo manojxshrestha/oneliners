@@ -30,7 +30,7 @@ curl -X POST "https://target.com/graphql" -H "Content-Type: application/json" -d
 ffuf -u https://target.com/FUZZ -w <(echo -e "graphql\ngraphiql\nplayground\nconsole\nquery\ngql\nv1/graphql\nv2/graphql\napi/graphql\napi/gql\nbatch\naltair") -mc 200,400 -ac -c -H "Content-Type: application/json" -d '{"query":"{__typename}"}' -X POST -o graphql-endpoints.json
 
 # Using httpx for bulk scanning
-cat domains.txt | httpx -silent -threads 100 -path /graphql -mc 200,301,302,307,308,400 -x POST -H "Content-Type: application/json" -body '{"query":"{__schema{types{name}}}"}' | grep -i "__schema" | anew graphql-endpoints.txt
+cat alive-domains.txt | httpx -silent -threads 100 -path /graphql -mc 200,301,302,307,308,400 -x POST -H "Content-Type: application/json" -body '{"query":"{__schema{types{name}}}"}' | grep -i "__schema" | anew graphql-endpoints.txt
 ```
 
 ### Alternative Request Methods
