@@ -32,7 +32,7 @@ done | anew api-keys.txt
 cat js-urls.txt | nuclei -t http/exposures/tokens/ -silent -o nuclei-keys.txt
 ```
 
-### 2. Comprehensive Regex Patterns
+### 2. Comprehensive Regex Patterns (optional)
 
 ```bash
 # Extended regex for various secret types
@@ -127,7 +127,7 @@ EOF
 gitleaks detect --config gitleaks.toml --source . --verbose --report leaks.json
 ```
 
-### truffleHog
+### truffleHog (optional)
 
 ```bash
 # Scan filesystem
