@@ -219,7 +219,7 @@ INTERACTSH_URL="https://YOUR_ID.oast.pro"  # Replace with your URL
 cat gf-ssrf.txt | qsreplace "$INTERACTSH_URL" | httpx -silent -threads 50
 
 # Using Burp Collaborator
-cat gf-ssrf.txt | qsreplace "https://YOURBURP.oastify.com" | httpx -silent
+cat gf-ssrf.txt | qsreplace "https://YOURBURP.oastify.com" | httpx -silent -status-code
 ```
 
 #### 4.2 Time-Based Detection
