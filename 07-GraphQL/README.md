@@ -69,7 +69,7 @@ curl -X POST "https://target.com/graphql" -H "Content-Type: application/json" -d
 curl -X POST "https://target.com/graphql" -H "Content-Type: application/x-www-form-urlencoded" -d 'query=query{__schema{queryType{name}}}'
 
 # Error guessing when introspection disabled (Clairvoyance)
-python3 clairvoyance.py -o recovered-schema.json https://target.com/graphql
+clairvoyance https://target.com/graphql -o recovered-schema.json
 ```
 
 ### Schema Visualization
