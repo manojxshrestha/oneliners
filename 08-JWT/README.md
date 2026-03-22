@@ -55,6 +55,9 @@ document.cookie.split(';').map(c => c.trim()).filter(c => /eyJ.*\..*\..*/.test(c
 # Decode JWT (header.payload) without verification
 echo "eyJhbGciOiJIUzI1NiIs..." | cut -d. -f1,2 | tr -d '\n' | base64 -d 2>/dev/null | jq .
 
+# Quick decode tip (in browser console)
+JSON.parse(atob("PASTE_TOKEN_HERE".split('.')[1]))
+
 # Full decode with python
 python3 -c "import jwt, sys; t=sys.argv[1]; print(jwt.decode(t, options={'verify_signature': False}, algorithms=['HS256']))" "eyJhbGciOiJIUzI1NiIs..."
 
