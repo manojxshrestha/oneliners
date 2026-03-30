@@ -194,7 +194,7 @@ curl -X POST https://target.com/graphql -H "Content-Type: application/json" -d '
 cat api-endpoints.txt | httpx -silent -mc 200,201,401,403 | nuclei -t dast/vulnerabilities/ -H "Content-Type: application/json" -rl 20 -c 5 -o api-nuclei-results.txt
 
 # Specific API templates
-nuclei -l api-endpoints.txt -t http/api/ -o api-specific-scans.txt
+nuclei -l api-endpoints.txt -t http/exposures/apis/ -o api-specific-scans.txt
 ```
 
 ### 4.2 Kiterunner Context‑Aware Fuzzing
