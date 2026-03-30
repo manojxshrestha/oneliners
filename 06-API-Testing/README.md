@@ -200,11 +200,15 @@ nuclei -l api-endpoints.txt -t http/exposures/apis/ -o api-specific-scans.txt
 ### 4.2 Kiterunner Context‑Aware Fuzzing
 
 ```bash
+# Smart API Route Brute-forcing
+kr scan https://api.target.com -w /home/pwn/wordlists/routes-large.kite --delay 200ms -t 20s -x 4 -j 1 --max-redirects 5 --wildcard-detection=false --quarantine-threshold 0 --fail-status-codes 403,429,500,502,503 --ignore-length 0-500 --ignore-length 10000-50000 --progress --verbose info -o pretty | tee kr-hidden.txt
+
+
 # Kiterunner for API endpoint discovery
-kr scan https://target.com -w /home/pwn/wordlists/kiterunner/routes-large.kite -x 20 -j -o kr-results.json
+kr scan https://target.com -w /home/pwn/wordlists/routes-large.kite -x 20 -j -o kr-results.json
 
 # Replay discovered routes
-kr brute https://target.com -w /home/pwn/wordlists/kiterunner/routes-large.kite -d 0
+kr brute https://target.com -w /home/pwn/wordlists/routes-large.kite -d 0
 ```
 
 ### 4.3 API‑Specific Wordlist Generation
