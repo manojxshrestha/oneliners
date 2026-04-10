@@ -96,7 +96,7 @@ site:*.example.com (ext:doc OR ext:docx OR ext:odt OR ext:pdf OR ext:rtf OR ext:
 
 ```bash
 # CDN detection and origin IP discovery
-cat alive-domains.txt | httpx -silent -cdn | grep -v "true" > non-cdn.txt  # Potential origin IPs
+httpx -l alive-domains.txt -silent -cdn | grep "\[false\]" > non-cdn.txt  # Potential origin IPs
 cat alive-domains.txt | httpx -silent -asn | grep -E "13335|15169|16509" > cloudflare-ips.txt  # CDN‑hosted
 ```
 
