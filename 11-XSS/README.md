@@ -69,10 +69,11 @@ gf jsonp paramurls.txt > jsonp-urls.txt
 cat gf-xss.txt | dalfox pipe --blind https://your-callback.xss.ht -o dalfox-results.txt
 
 # Advanced scan with WAF bypass techniques
-cat gf-xss.txt | dalfox pipe --skip-bav --skip-mining-all --waf-evasion -o advanced-results.txt
+cat gf-xss.txt | dalfox pipe --skip-bav --skip-mining-all --waf-evasion > advanced-results.txt
+grep -i "vulnerable" advanced-results.txt
 
 # Mass scan with custom payloads
-cat gf-xss.txt | dalfox pipe -p /path/to/custom-payloads.txt --multicast --delay 300 -o mass-results.txt
+cat gf-xss.txt | dalfox pipe -p /path/to/custom-payloads.txt --multicast --delay 300 > mass-results.txt
 ```
 
 ### 6. Manual Testing with Curl & Custom Payloads
