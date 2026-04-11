@@ -158,7 +158,7 @@ cat *.txt | sort -u | httpx -silent -o live-hosts.txt
 ## 4. Virtual Host Discovery
 
 ```bash
-gobuster vhost -u https://www.target.com -w /home/pwn/wordlists/subdomains-top1million-110000.txt --append-domain -o vhosts.txt
+gobuster vhost -u https://www.target.com -w /home/pwn/wordlists/common.txt --append-domain -o vhosts.txt
 
 # With ffuf
 ffuf -u https://www.target.com -H "Host: FUZZ.target.com" -w /home/pwn/wordlists/subdomains-top1million-110000.txt -t 50 -c -fs 0
