@@ -164,7 +164,7 @@ gobuster vhost -u https://www.target.com -w /home/pwn/wordlists/common.txt --app
 gobuster vhost -u https://target.com -w /home/pwn/wordlists/common.txt --append-domain -o vhosts.txt
 
 # With ffuf
-ffuf -u https://www.target.com -H "Host: FUZZ.target.com" -w /home/pwn/wordlists/subdomains-top1million-110000.txt -t 50 -c -fs 0 -fc 500
+ffuf -u https://www.target.com -H "Host: FUZZ.target.com" -w /home/pwn/wordlists/subdomains-top1million-110000.txt -t 50 -c -fs 0 -fc 403,500
 ```
 
 ## References
