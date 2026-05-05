@@ -117,12 +117,7 @@ wfuzz -c -z file,/home/pwn/wordlists/5-digits-00000-99999.txt --hc 404 --hh 2873
 When fuzzing parameters, most responses return the same size (false positives). Valid tokens/endpoints return different sizes - this helps identify them.
 ## How to Find the Baseline Size
 ```bash
-# Test with a dummy value
-curl -s "https://target.com/verify?token=test" -w "\nSize: %{size_download}" | tail -1
-# Or multiple test values
-for val in test abc 123; do
-  curl -s "https://target.com/verify?token=$val" -w "Value: $val Size: %{size_download}\n"
-done
+curl -s -I http://10.129.229.147 -H "HOST: defnotvalid.inlanefreight.local" | grep "Content-Length:"
 ```
 ## Tools & Examples
 ### 1. wfuzz - Filter by Size
