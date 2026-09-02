@@ -24,14 +24,10 @@ Test these areas systematically using regex patterns, dedicated tools, and manua
 cat crawledurls.txt | grep -i "\.js$" | httpx -silent -mc 200 | anew js-urls.txt
 ```
 ```bash
-mkdir -p js-files
-cat js-urls.txt | while read -r url; do
-  fname=$(basename "$url" | cut -d'?' -f1)
-  curl -sL "$url" -o "js-files/$fname"
+cat js-urls.txt | grep -o 'https://[^ ]*' | sort -u | while read url; do
+    echo "Scanning: $url"
+    curl -s "$url" | trufflehog stdin --no-verification
 done
-```
-```bash
-trufflehog filesystem js-files/ --only-verified --no-update
 ````
 
 # Search for API keys, tokens, secrets
