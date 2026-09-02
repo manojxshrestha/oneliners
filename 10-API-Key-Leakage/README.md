@@ -27,7 +27,7 @@ cat crawledurls.txt | grep -i "\.js$" | httpx -silent -mc 200 | anew js-urls.txt
 mkdir -p js-files
 cat js-urls.txt | while read -r url; do
   fname=$(basename "$url" | cut -d'?' -f1)
-  curl -sL "$url" -o "js_files/$fname"
+  curl -sL "$url" -o "js-files/$fname"
 done
 ```
 ```bash
