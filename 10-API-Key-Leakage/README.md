@@ -22,7 +22,7 @@ Test these areas systematically using regex patterns, dedicated tools, and manua
 ```bash
 # Extract all JavaScript URLs
 cat crawledurls.txt | grep -i "\.js$" | httpx -silent -mc 200 | anew js-urls.txt
-
+```
 ```bash
 mkdir -p js-files
 cat js-urls.txt | while read -r url; do
