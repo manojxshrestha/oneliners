@@ -668,6 +668,8 @@ echo "Filtered URLs saved to $output_file"
 # 1. Extract live JavaScript files
 cat crawledurls.txt | grep "\.js" | grep -Ev "\.json|\.jsp" | sort -u | httpx -silent -mc 200,301,302 -threads 200 -o livejslinks.txt
 
+nuclei -l livejslinks.txt -t ~/nuclei-templates/http/exposures/ -o js-bugs.txt
+
 # 2. LinkFinder – find endpoints in JS files
 cat livejslinks.txt | xargs -I@ python3 ~/tools/LinkFinder/linkfinder.py -i @ -o cli | grep -E "(http|https)://" | anew js-endpoints.txt
 
